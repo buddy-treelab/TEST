@@ -19,14 +19,15 @@ jobs:
           node-version: 12
 
       - name: Get package version
-        run: TARGET_VERSION=`echo $TAG_REF | awk -F/ '{print $3}'` && echo $TARGET_VERSION
+        id: github-ref
+        run: echo "::set-output name=tag::$(echo $TAG_REF | awk -F/ '{print $3}')"
         env:
           TAG_REF: ${{ github.ref }}
           
-      - run: echo "tag [$TARGET_VERSION] | ${TAGET_VERSION} | $TAG_REF | ${TAG_REF}"
-        
-      - name: Change package version
-        run: yarn version --new-version $TARGET_VERSION
+      - name: Show version
+        run: echo "tag [$TARGET_VERSION]" && yarn version --new-version $TARGET_VERSION
+        env:
+          TARGET_VERSION: ${{ step.github-ref.outputs.tag }}
         
       - name: Show
         run: yarn version
