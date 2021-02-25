@@ -31,3 +31,7 @@ jobs:
         
       - name: Install
         run: yarn
+        
+      - run: echo $TEMP_TOKEN
+        env:
+          TEMP_TOKEN: ${{ secrets.npm_token }}
