@@ -25,7 +25,7 @@ jobs:
           TAG_REF: ${{ github.ref }}
           
       - name: Show version
-        run: echo "tag [$TARGET_VERSION]" && yarn version --new-version $TARGET_VERSION
+        run: echo "tag [$TARGET_VERSION]" && yarn version --no-git-tag-version --new-version $TARGET_VERSION
         env:
           TARGET_VERSION: ${{ steps.github-ref.outputs.tag }}
         
