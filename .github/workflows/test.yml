@@ -19,9 +19,9 @@ jobs:
           node-version: 12
 
       - name: Get package version
-        run: TARGET_VERSION=`echo $GITHUB_REF | cut -d "/" -f3`
-        
-      - run: echo "target ver [$TARGET_VERSION]"
+        run: echo "target ver [$TARGET_VERSION]"
+        env:
+          TARGET_VERSION: ${{ echo $GITHUB_REF | cut -d "/" -f3 }}
         
       - name: Change package version
         run: yarn version --new-version $TARGET_VERSION
