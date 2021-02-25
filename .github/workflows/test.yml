@@ -17,8 +17,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12
-          
-      - run: yarn version
 
       - name: Get package version
         run: TARGET_VERSION=`echo $GITHUB_REF | cut -d "/" -f3`
