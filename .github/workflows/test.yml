@@ -17,15 +17,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12
+          
+      - run: yarn version
 
-      - name: Change package version
-        run: echo "$GITHUB_REF"
+      - name: Get package version
+        run: TARGET_VERSION=`echo $GITHUB_REF | cut -d "/" -f3`
+        
+      - run: echo "target ver [$TARGET_VERSION]"
         
       - name: Change package version
-        run: yarn version --new-version $GITHUB_REF
-
-      - name: Install Dependencies
-        run: yarn
+        run: yarn version --new-version $TARGET_VERSION
         
       - name: Show
         run: yarn version
