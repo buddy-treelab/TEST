@@ -29,5 +29,5 @@ jobs:
         env:
           TARGET_VERSION: ${{ steps.github-ref.outputs.tag }}
         
-      - name: Show
-        run: yarn version
+      - name: Install
+        run: yarn
