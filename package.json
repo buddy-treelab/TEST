@@ -1,4 +1,5 @@
 {
-  "name": "treelab-lab=test",
-  "version": "1.0.0",
+  "name": "treelab-lab-test",
+  "version": "6.0.0",
+  "dependencies": {}
 }
